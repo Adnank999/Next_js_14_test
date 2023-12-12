@@ -22,14 +22,17 @@ class TaskController extends Controller
      */
     public function create(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
-        ]);
+        // $validatedData = $request->validate([
+        //     'id' => 'required|string',
+        //     'name' => 'required|string|max:255',
+        //     'category' => 'required|string|max:255',
+        //     'checked' => 'required'
+        // ]);
 
         $task = new Task();
-        $task->name = $validatedData['name'];
-        $task->category = $validatedData['category'];
+        $task->name = $request->name;
+        $task->category = $request->category;
+        $task->checked = $request->checked;
 
         $task->save();
 
@@ -68,6 +71,7 @@ class TaskController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
+            'checked' => 'required'
            
         ]);
 
@@ -82,6 +86,7 @@ class TaskController extends Controller
        
         $task->name = $validatedData['name'];
         $task->category = $validatedData['category'];
+        $task->checked = $validatedData['checked'];
      
 
        
